@@ -12,4 +12,8 @@ import lombok.Setter;
 public class Item {
     private Product product;
     private Integer quantity;
+
+    public Double getPrice() {
+        return quantity * product.getPrice();
+    }
 }

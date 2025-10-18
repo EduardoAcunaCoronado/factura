@@ -1,5 +1,6 @@
 package com.ejemplo.factura.models;
 
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -27,6 +27,22 @@ public class Invoice {
     @Autowired
     @Qualifier("default")
     private List<Item> items;
+
+    public Invoice(){
+        System.out.println("Iniciando Invoice...");
+        System.out.println(client);
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("PostConstruct invoice...");
+        System.out.println(client.getName());
+        client.setName(client.getName().concat(" Pepe"));
+        System.out.println(client.getName());
+        System.out.println(client.getLastname());
+        client.setLastname(client.getLastname().concat(" Pepe"));
+        System.out.println(client.getLastname());
+    }
 
     public Double getTotal() {
         double total = 0.0;

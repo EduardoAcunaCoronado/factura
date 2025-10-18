@@ -1,9 +1,9 @@
 package com.ejemplo.factura.models;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,6 +42,11 @@ public class Invoice {
         System.out.println(client.getLastname());
         client.setLastname(client.getLastname().concat(" Pepe"));
         System.out.println(client.getLastname());
+    }
+
+    @PreDestroy
+    private void destroy() {
+        System.out.println("Destroy invoice...");
     }
 
     public Double getTotal() {

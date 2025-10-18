@@ -26,4 +26,13 @@ public class Invoice {
     @Autowired
     private List<Item> items;
 
+    public Double getTotal() {
+        double total = 0.0;
+        for (Item item : items) {
+            total += item.getPrice();
+            System.out.println(total);
+        }
+        return total;
+    }
+
 }

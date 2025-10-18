@@ -32,7 +32,6 @@ public class Invoice {
         double total = 0.0;
         for (Item item : items) {
             total += item.getPrice();
-            System.out.println(total);
         }
         return total;
     }
